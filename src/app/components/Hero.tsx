@@ -34,7 +34,7 @@ export default function Hero() {
           <div className="absolute inset-0 bg-gradient-to-r from-neutral-400 to-orange-200 rounded-2xl rotate-3 opacity-50 blur-xl" />
           <div className="relative h-full w-full overflow-hidden rounded-2xl border-2 border-neutral-700 shadow-2xl">
             <Image
-              src={"/images/portfolio.jpg"}
+              src={"/images/portfolio.JPG"}
               alt="Vilmos Misota"
               placeholder="blur"
               priority
