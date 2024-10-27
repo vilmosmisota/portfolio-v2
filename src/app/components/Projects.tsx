@@ -111,7 +111,7 @@ const projects = [
       "SportWise is a versatile platform serving both sports leagues and individual organizations. It streamlines operations with tailored interfaces for different tenant types - leagues can manage competitions and standings, while organizations track training attendance and handle administrative tasks. The application utilizes Next.js with hybrid rendering strategies: server-side rendering for public-facing pages ensuring fast initial loads, and client-side rendering with TanStack Query for dynamic admin interfaces. This approach provides optimal performance while maintaining real-time data synchronization across the platform.",
     imgages: [
       {
-        url: "/images/sportwise.jpg",
+        url: "",
         alt: "SportWise dashboard interface",
         width: 1920,
         height: 960,
