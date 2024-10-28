@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ProjectItem from "./ProjectItem";
 
 const ProjectSection = () => {
   return (
@@ -23,76 +23,7 @@ const ProjectSection = () => {
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {projects.map((project) => (
-            <div
-              key={project.title}
-              className="group bg-neutral-900/50 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-neutral-800/50 transition-all duration-300 w-full border border-orange-300/10 hover:border-orange-300"
-            >
-              {/* Project Image Container */}
-              <div className="relative w-full">
-                {/* Main Image */}
-                <div className="relative aspect-video w-full overflow-hidden">
-                  <Image
-                    src={project.imgages[0].url}
-                    alt={project.imgages[0].alt}
-                    layout="fill"
-                    objectFit="cover"
-                    className="group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-
-                {/* Hover GIF Overlay */}
-                {project.clips && project.clips.length > 0 && (
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <Image
-                      src={project.clips[0].url}
-                      alt={project.clips[0].alt}
-                      layout="fill"
-                      objectFit="cover"
-                      className="transition-transform duration-300"
-                    />
-                  </div>
-                )}
-              </div>
-
-              {/* Project Content */}
-              <div className="p-8 opacity-80 group-hover:opacity-100">
-                <div className="space-y-4">
-                  {/* Header */}
-                  <div>
-                    <h3 className="text-2xl font-semibold mb-2">
-                      {project.title}
-                    </h3>
-                    <p className="text-neutral-400">{project.subTitle}</p>
-                  </div>
-
-                  {/* Role */}
-                  <div className="inline-block">
-                    <span className="px-4 py-1.5 bg-neutral-800 rounded-full text-sm text-neutral-300">
-                      {project.role}
-                    </span>
-                  </div>
-
-                  {/* Project Description */}
-                  <div className="h-28">
-                    <p className="text-neutral-300 line-clamp-3">
-                      {project.description}
-                    </p>
-                  </div>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 pt-2">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-3 py-1 bg-neutral-800/50 rounded-full text-sm text-neutral-300"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
+            <ProjectItem key={project.title} project={project} />
           ))}
         </div>
       </div>
@@ -109,22 +40,8 @@ const projects = [
     role: "Full-stack Developer",
     description:
       "SportWise is a versatile platform serving both sports leagues and individual organizations. It streamlines operations with tailored interfaces for different tenant types - leagues can manage competitions and standings, while organizations track training attendance and handle administrative tasks. The application utilizes Next.js with hybrid rendering strategies: server-side rendering for public-facing pages ensuring fast initial loads, and client-side rendering with TanStack Query for dynamic admin interfaces. This approach provides optimal performance while maintaining real-time data synchronization across the platform.",
-    imgages: [
-      {
-        url: "",
-        alt: "SportWise dashboard interface",
-        width: 1920,
-        height: 960,
-      },
-    ],
-    clips: [
-      {
-        url: "/clips/sportwise.gif",
-        alt: "SportWise platform demonstration",
-        width: 600,
-        height: 338,
-      },
-    ],
+    imgages: [],
+    clips: [],
     tags: ["Next.js", "TypeScript", "TanStack Query", "Supabase", "Tailwind"],
   },
   {

@@ -36,7 +36,6 @@ export default function Hero() {
             <Image
               src={"/images/portfolio.JPG"}
               alt="Vilmos Misota"
-              placeholder="blur"
               priority
               className="object-cover"
               quality={95}
