@@ -12,11 +12,12 @@ const ProjectSection = () => {
           </h2>
 
           <p className="space-y-6 text-lg text-neutral-400 text-center leading-relaxed">
-            Some of the projects listed here are personal side projects that I
-            have undertaken to challenge myself and expand my knowledge. Others
-            are from working with small businesses, where I have helped them
-            establish an online presence and increase their reach through custom
-            web design and development solutions.
+            Some of the projects listed here are personal side endeavors
+            I&apos;ve undertaken to expand my skills, as well as custom web
+            design and development solutions created for small businesses to
+            establish and enhance their online presence. Each project has
+            allowed me to continuously develop my expertise and problem-solving
+            abilities, making me a more versatile and capable web professional.
           </p>
         </div>
 
