@@ -22,9 +22,8 @@ export default function IntroSection() {
 
             <p>
               Beyond the screen, you&apos;ll find me embracing life&apos;s
-              adventures: catching waves at dawn, scaling rock faces, and
-              capturing moments through my camera lens. These pursuits, along
-              with precious time spent with family, bring balance to my
+              adventures: surfing waves, climbing rocks, and capturing moments
+              through my camera lens. These pursuits, bring balance to my
               tech-driven world and fuel my creative energy.
             </p>
           </div>
