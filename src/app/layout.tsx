@@ -14,7 +14,7 @@ const newsreader = Newsreader({
   axes: ["opsz"],
 });
 
-const SITE_URL = "https://vilmosmisota.co.uk";
+const SITE_URL = "https://www.vilmosmisota.co.uk";
 const TITLE = "Vilmos Misota";
 const DESCRIPTION =
   "Software developer in Edinburgh who builds across the stack with taste and creativity, and the builder of Zeelio.";
