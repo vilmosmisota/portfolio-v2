@@ -1,15 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
+import Image from "next/image";
 import { Avatar } from "@/components/avatar";
 import { CopyEmailButton } from "@/components/copy-email-button";
 import { Section } from "@/components/section";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { ZeelioSection } from "@/components/zeelio-section";
-import outdoors640Avif from "@/assets/outdoors-640.avif";
-import outdoors640Jpg from "@/assets/outdoors-640.jpg";
-import outdoors1280Avif from "@/assets/outdoors-1280.avif";
-import outdoors1280Jpg from "@/assets/outdoors-1280.jpg";
-
-export const Route = createFileRoute("/")({ component: Home });
+import outdoorsPhoto from "@/assets/outdoors-1280.jpg";
 
 const EMAIL = "misotavilmos@gmail.com";
 
@@ -73,7 +68,7 @@ const principles = [
   },
 ];
 
-function Home() {
+export default function Home() {
   return (
     <>
       <div className="mx-auto max-w-[46rem] px-5 sm:px-8">
@@ -122,24 +117,13 @@ function Home() {
           </dl>
         </Section>
         <Section label="Outside work">
-          <picture>
-            <source
-              type="image/avif"
-              srcSet={`${outdoors640Avif} 640w, ${outdoors1280Avif} 1280w`}
-              sizes="(min-width: 640px) 31rem, calc(100vw - 2.5rem)"
-            />
-            <img
-              src={outdoors1280Jpg}
-              srcSet={`${outdoors640Jpg} 640w, ${outdoors1280Jpg} 1280w`}
-              sizes="(min-width: 640px) 31rem, calc(100vw - 2.5rem)"
-              width={1280}
-              height={853}
-              alt="Vilmos on a rocky beach, the sea breaking behind him"
-              loading="lazy"
-              decoding="async"
-              className="aspect-[3/2] w-full rounded-2xl object-cover outline outline-1 -outline-offset-1 outline-black/10 dark:outline-white/10"
-            />
-          </picture>
+          <Image
+            src={outdoorsPhoto}
+            alt="Vilmos on a rocky beach, the sea breaking behind him"
+            sizes="(min-width: 640px) 31rem, calc(100vw - 2.5rem)"
+            placeholder="blur"
+            className="aspect-[3/2] w-full rounded-2xl object-cover outline outline-1 -outline-offset-1 outline-black/10 dark:outline-white/10"
+          />
           <p className="mt-5 text-pretty text-ink-soft">
             I’m happiest outdoors: surfing, photographing waves or rock climbing. Back home, I like
             to pick up a guitar and make music.

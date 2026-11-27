@@ -1,3 +1,5 @@
+"use client";
+
 import { toggleTheme } from "./theme";
 
 /*

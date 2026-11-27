@@ -1,12 +1,9 @@
 # vilmosmisota.co.uk
 
-Personal site. A single static page built with TanStack Start and prerendered at build time.
+Personal site. A single page built with Next.js, prerendered as static content and deployed on Vercel.
 
 ```bash
 npm install
 npm run dev        # http://localhost:3100
-npm run build      # static output in dist/client
-npm run preview    # serve the build locally
+npm run build
 ```
-
-Deploy `dist/client` to any static host.

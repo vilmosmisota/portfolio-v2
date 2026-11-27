@@ -1,10 +1,8 @@
+"use client";
+
+import Image from "next/image";
 import { useEffect, useEffectEvent, useRef, useState } from "react";
-import avatar48Avif from "@/assets/avatar-48.avif";
-import avatar48Jpg from "@/assets/avatar-48.jpg";
-import avatar96Avif from "@/assets/avatar-96.avif";
-import avatar96Jpg from "@/assets/avatar-96.jpg";
-import momentsAvif from "@/assets/avatar-moments.avif";
-import momentsJpg from "@/assets/avatar-moments.jpg";
+import avatarStill from "@/assets/avatar-96.jpg";
 
 /*
  * The sprite holds one row per moment and FRAMES_PER_MOMENT columns, frame 0 being rest.
@@ -13,6 +11,8 @@ import momentsJpg from "@/assets/avatar-moments.jpg";
  * tile behind them must stay that colour in both themes.
  */
 const TILE_COLOUR = "#e3ebf1";
+// Served from public/ as-is: the sprite is already encoded and must not be re-processed.
+const MOMENTS_SPRITE = `image-set(url("/avatar/moments.avif") type("image/avif"), url("/avatar/moments.jpg") type("image/jpeg"))`;
 const FRAMES_PER_MOMENT = 6;
 const INTRO_STORAGE_KEY = "avatar-intro-played";
 const INTRO_DELAY_MS = 1200;
@@ -126,23 +126,20 @@ export function Avatar() {
         style={{ backgroundColor: TILE_COLOUR }}
         className="relative size-10 shrink-0 overflow-hidden rounded-xl outline outline-1 -outline-offset-1 outline-black/5 transition-transform duration-150 ease-out active:scale-[0.94] dark:outline-white/10"
       >
-        <picture className={`absolute inset-0 ${playing ? "invisible" : ""}`}>
-          <source type="image/avif" srcSet={`${avatar48Avif} 1x, ${avatar96Avif} 2x`} />
-          <img
-            src={avatar96Jpg}
-            srcSet={`${avatar48Jpg} 1x, ${avatar96Jpg} 2x`}
-            width={40}
-            height={40}
-            alt=""
-            className="size-full"
-          />
-        </picture>
+        <Image
+          src={avatarStill}
+          alt=""
+          width={40}
+          height={40}
+          priority
+          className={`absolute inset-0 size-full ${playing ? "invisible" : ""}`}
+        />
         {/* Always mounted so the sprite is already decoded when the first moment plays. */}
         <span
           aria-hidden
           className={`absolute inset-0 bg-no-repeat ${playing ? "" : "invisible"}`}
           style={{
-            backgroundImage: `image-set(url(${momentsAvif}) type("image/avif"), url(${momentsJpg}) type("image/jpeg"))`,
+            backgroundImage: MOMENTS_SPRITE,
             backgroundSize: `${FRAMES_PER_MOMENT * 100}% ${moments.length * 100}%`,
             backgroundPosition: `${((frame ?? 0) / (FRAMES_PER_MOMENT - 1)) * 100}% ${
               (momentIndex / (moments.length - 1)) * 100
