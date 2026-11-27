@@ -1,0 +1,146 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/newsreader/opsz.css";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* Palette pulled from the portrait: stone and paper, North Sea blue, wool grey. */
+:root {
+  --canvas: #f5f4f0;
+  --surface: #fcfbf8;
+  --sunken: #eeece6;
+  --ink: #16191c;
+  --ink-soft: #464c53;
+  --muted: #68707a;
+  --rule: #e0ddd6;
+  --accent: #2b5877;
+  --accent-tint: rgb(43 88 119 / 0.08);
+  --highlight: rgb(255 255 255 / 0.85);
+  --shadow: 0 1px 2px rgb(22 25 28 / 0.04), 0 12px 32px -16px rgb(22 25 28 / 0.16);
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --canvas: #0c0f12;
+  --surface: #13181d;
+  --sunken: #0f1317;
+  --ink: #e6e9ec;
+  --ink-soft: #a9b2bb;
+  --muted: #7e8893;
+  --rule: #212930;
+  --accent: #93b9d7;
+  --accent-tint: rgb(147 185 215 / 0.08);
+  --highlight: rgb(255 255 255 / 0.05);
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 16px 40px -20px rgb(0 0 0 / 0.7);
+
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-sunken: var(--sunken);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-muted: var(--muted);
+  --color-rule: var(--rule);
+  --color-accent: var(--accent);
+  --color-accent-tint: var(--accent-tint);
+
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Newsreader Variable", ui-serif, Georgia, serif;
+}
+
+@layer base {
+  html {
+    background: var(--canvas);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--canvas);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  /* A theme change is a repaint, not a moment: nothing should fade between palettes. */
+  [data-theme-switching] *:not([data-theme-icon]),
+  [data-theme-switching] *::before,
+  [data-theme-switching] *::after {
+    transition: none !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer components {
+  /* First paint only: the page settles in once, then never moves again. */
+  .enter {
+    animation: enter 640ms var(--ease-out) both;
+    animation-delay: calc(var(--enter-step, 0) * 70ms);
+  }
+
+  .text-link {
+    color: var(--ink);
+    text-decoration-line: underline;
+    text-decoration-color: var(--rule);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    transition: text-decoration-color 150ms ease;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .text-link:hover {
+      text-decoration-color: var(--accent);
+    }
+  }
+
+  .raised {
+    background: var(--surface);
+    box-shadow:
+      inset 0 1px 0 var(--highlight),
+      var(--shadow);
+  }
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+    filter: blur(4px);
+  }
+}
+
+@keyframes enter-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .enter {
+    animation-name: enter-fade;
+    animation-duration: 300ms;
+  }
+}
