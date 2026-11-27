@@ -6,7 +6,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { ZeelioSection } from "@/components/zeelio-section";
 import outdoorsPhoto from "@/assets/outdoors-1280.jpg";
 
-const EMAIL = "misotavilmos@gmail.com";
+const EMAIL = "vilmosmisota@outlook.com";
 
 const profileLinks = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/vilmos-misota-586204210" },
